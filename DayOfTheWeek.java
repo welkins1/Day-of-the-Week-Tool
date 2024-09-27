@@ -2,7 +2,7 @@ package dayoftheweek;
 
 //This is my first GitHub upload :)
 //Programmer Name: Austin
-//GitHub Username: 
+//GitHub Username: welkins1
 
 //Catches invalid input beyond invalid numbers
 import java.util.InputMismatchException;
