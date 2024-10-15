@@ -4,8 +4,6 @@ package dayoftheweek;
 //Programmer Name: Austin
 //GitHub Username: welkins1
 
-//Catches invalid input beyond invalid numbers
-import java.util.InputMismatchException;
 
 //Allows for Scanner input
 import java.util.Scanner;
@@ -18,102 +16,162 @@ public class DayOfTheWeek {
         System.out.println("This program tells you what day of the week it will be after a certain amount of days after your selected day of the week.\n");
 
         //Legend 
-        System.out.println("~~~~~~~~~~~~~~\n");
-        System.out.println("0 = Sunday\n");
-        System.out.println("1 = Monday\n");
-        System.out.println("2 = Tuesday\n");
-        System.out.println("3 = Wednesday\n");
-        System.out.println("4 = Thursday\n");
-        System.out.println("5 = Friday\n");
-        System.out.println("6 = Saturday\n");
-        System.out.println("~~~~~~~~~~~~~~\n");
-
+        System.out.println("""
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                                 0 = Sunday
+                           
+                                                 1 = Monday
+                           
+                                                 2 = Tuesday
+                           
+                                                 3 = Wednesday
+                            
+                                                 4 = Thursday
+                           
+                                                 5 = Friday
+                           
+                                                 6 = Saturday
+                           
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                           """);
+        
+        
+        
+         //Creating scanner instance method
         Scanner input = new Scanner(System.in);
 
-        //Declaring DayOfTheWeek variable
-        int DayOfTheWeek;
+       
+       
 
-        //DayOfTheWeek Prompt
+        
+        //Declaring & Assigning Variable for first day chosen
+        int FirstDayOfTheWeek = -5;
+
+        //Declaring variable for invalid input
+        boolean InputValid1 = false;
+
+        //FirstDayofTheWeek input prompt
         System.out.print("Please select a day of the week using the legend above (0-6): ");
+        
+        //Loop used for input validation
+        while (!InputValid1) {
 
-        //Invalid input loop for DayOfTheWeek
-        while (true) {
+            //If statement to check if user input is an Int
+            if (input.hasNextInt()) { //input.hasNextInt checks if value is an Int
+                FirstDayOfTheWeek = input.nextInt();
+                
+           
+                 //If statemement to verify valid number
+            if (FirstDayOfTheWeek >= 0 && FirstDayOfTheWeek <= 6) {
+                InputValid1 = true;
+            } else { //This else is associated with the second if expression
+                System.out.print("Invalid day, please enter a number 0-6: ");
+               
+               
+            }
 
-            try {
-
-                //DayOfTheWeek input
-                DayOfTheWeek = input.nextInt();
-
-                if (DayOfTheWeek >= 0 && DayOfTheWeek <= 6) {
-                    break;
-                } else {
-                    System.out.print("Please select a number 0-6: ");
-
-                }
-                //Prevents program from crashing if there is an invalid input beyond an invalid number
-            } catch (InputMismatchException error) {
+             } else { //This else is associated with the first if expression
+                System.out.print("Invalid input, please enter a number 0-6: ");
                 input.next();
-                System.out.print("Please select a number 0-6: ");
-
             }
         }
 
-        //Spacer 
-        System.out.println("");
+
+        //Declaring FirstDay to display a string
+        String FirstDay = "";
+
+        //Switch statement for string
+        switch (FirstDayOfTheWeek) {
+            case 0 ->
+                FirstDay = "Sunday";
+            case 1 ->
+                FirstDay = "Monday";
+            case 2 ->
+                FirstDay = "Tuesday";
+            case 3 ->
+                FirstDay = "Wednesday";
+            case 4 ->
+                FirstDay = "Thursday";
+            case 5 ->
+                FirstDay = "Friday";
+            case 6 ->
+                FirstDay = "Saturday";
+
+        
+        }
+        
+        //Displays day chosen (FirstDay)
+        System.out.println("\nYou chose " + FirstDay + ".");
+        
+        
+       
 
         //Declaring DaysAhead 
         int DaysAhead = -1;
 
         //DaysAheadPrompt
-        System.out.print("Enter the amount of days you would like to look ahead to see the new day of the week (Max is 100,000): ");
+        System.out.print("\nEnter the amount of days you would like to look ahead to see the new day of the week (Max is 999,999): ");
 
-        //Invalid input loop for DaysAhead 
-        while (true) {
-            try {
-                //DaysAheadInput
+        
+        
+        
+       
+         
+         //Declaring variable for invalid input
+         boolean InputValid2 = false;
+         
+         //Loop used for input validation
+         while (!InputValid2) {
+
+            if (input.hasNextInt()) {
                 DaysAhead = input.nextInt();
+                
+           
 
-                if (DaysAhead >= 0 && DaysAhead <= 100000) {
-                    break;
-                } else {
-                    System.out.print("Please select a number between 0 and 100,000: ");
+            if (DaysAhead >= 0 && DaysAhead <= 999999) {
+                InputValid2 = true;
+            } else { //This else is associated with second if expression
+                System.out.print("Invalid day, please enter a number 0-999,999: ");
+               
+            }
 
-                }
-                //Prevents program from crashing if there is an invalid input beyond an invalid number
-            } catch (InputMismatchException error) {
+             } else { //This else is associated with first if expression
+                System.out.print("Invalid input, please enter a number 0-999,999: ");
                 input.next();
-                System.out.print("Please select a number between 0 and 100,0000: ");
             }
         }
+         
+         
+       
 
         //Calculation for newDate
-        int newDate = (DayOfTheWeek + DaysAhead) % 7;
+        int newDate = (FirstDayOfTheWeek + DaysAhead) % 7;
 
-        //Switch statement for displaying new day of the week (dayName)
-        String dayName = "";
+        //Switch statement for displaying new day of the week (SecondDay)
+        String SecondDay = "";
 
         switch (newDate) {
             case 0 ->
-                dayName = "Sunday";
+                SecondDay = "Sunday.";
             case 1 ->
-                dayName = "Monday";
+                SecondDay = "Monday.";
             case 2 ->
-                dayName = "Tuesday";
+                SecondDay = "Tuesday.";
             case 3 ->
-                dayName = "Wednesday";
+                SecondDay = "Wednesday.";
             case 4 ->
-                dayName = "Thursday";
+                SecondDay = "Thursday.";
             case 5 ->
-                dayName = "Friday";
+                SecondDay = "Friday.";
             case 6 ->
-                dayName = "Saturday";
+                SecondDay = "Saturday.";
 
         }
 
-        //Spacer
-        System.out.println("");
-
         //Result
-        System.out.println(DaysAhead + " Day(s) after your chosen day of the week is " + dayName + ".\n");
+        System.out.printf("\n%,d Day(s) after a " + FirstDay + " is a " + SecondDay + "\n", DaysAhead);
+                
     }
 }
+
+        
