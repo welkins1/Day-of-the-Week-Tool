@@ -1,5 +1,3 @@
-package dayoftheweek;
-
 //This is my first GitHub upload :)
 //Programmer Name: Austin
 //GitHub Username: welkins1
