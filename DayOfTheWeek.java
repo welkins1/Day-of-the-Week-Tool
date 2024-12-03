@@ -129,12 +129,12 @@ public class DayOfTheWeek {
             if (DaysAhead >= 0 && DaysAhead <= 999999) {
                 InputValid2 = true;
             } else { //This else is associated with second if expression
-                System.out.print("Invalid day, please enter a number 0-999,999: ");
+                System.out.print("\nInvalid day, please enter a number 0-999,999: ");
                
             }
 
              } else { //This else is associated with first if expression
-                System.out.print("Invalid input, please enter a number 0-999,999: ");
+                System.out.print("\nInvalid input, please enter a number 0-999,999: ");
                 input.next();
             }
         }
